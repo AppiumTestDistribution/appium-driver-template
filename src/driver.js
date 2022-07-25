@@ -1,5 +1,6 @@
 import { BaseDriver, errors } from "@appium/base-driver";
 import log from "./logger";
+import commands from "./commands";
 
 class AppiumTemplateDriver extends BaseDriver {
   constructor(args) {
@@ -22,4 +23,5 @@ class AppiumTemplateDriver extends BaseDriver {
   }
 }
 
+Object.assign(AppiumTemplateDriver.prototype, commands);
 export { AppiumTemplateDriver };
