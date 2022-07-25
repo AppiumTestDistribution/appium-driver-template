@@ -1,0 +1,50 @@
+{
+  "name": "appium-driver-template",
+  "version": "1.0.0",
+  "description": "Appium Driver Template to create Appium 2.0 drivers",
+  "main": "./build/driver.js",
+  "bin": {},
+  "directories": {
+    "src": "src"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "scripts": {
+    "clean": "rimraf package-lock.json && rimraf node_modules && npm install",
+    "build": "rimraf build && tsc",
+    "watch": "tsc --watch",
+    "test": "mocha --require ts-node/register -p ./test/*.spec.js --timeout 260000",
+    "install-driver": "npm run build && appium driver install --source=local $(pwd)",
+    "reinstall-driver": "(appium driver uninstall template-driver || exit 0) && npm run install-driver"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.2.0",
+    "mocha": "^10.0.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.1.2",
+    "webdriverio": "^7.12.4"
+  },
+  "dependencies": {
+    "@appium/base-driver": "^8.0.0",
+    "@appium/support": "^2.54.0"
+  },
+  "keywords": [
+    "appium",
+    "driver"
+  ],
+  "author": "",
+  "license": "ISC",
+  "appium": {
+    "driverName": "template-driver",
+    "automationName": "template",
+    "platformNames": [
+      "Android",
+      "iOS"
+    ],
+    "mainClass": "AppiumTemplateDriver"
+  }
+}
